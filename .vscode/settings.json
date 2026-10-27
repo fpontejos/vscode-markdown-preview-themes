@@ -1,0 +1,9 @@
+{
+  "search.exclude": {
+    "dist/": true,
+    "docs/site/": true,
+    "vendor/": true,
+    "package-lock.json": true
+  },
+  "typescript.tsc.autoDetect": "off"
+}

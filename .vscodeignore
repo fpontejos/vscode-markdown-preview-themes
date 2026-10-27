@@ -1,0 +1,20 @@
+# Development-only files excluded from the .vsix. Shipped: package.json, README.md,
+# CHANGELOG.md, LICENSE, media/, dist/extension.js, dist/themes.json, dist/themes.html.
+.vscode/**
+.github/**
+node_modules/**
+src/**
+scripts/**
+test/**
+vendor/**
+themes/**
+docs/**
+tsconfig.json
+eslint.config.mjs
+.editorconfig
+.gitattributes
+.gitignore
+package-lock.json
+**/*.map
+**/.DS_Store
+*.vsix

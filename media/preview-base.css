@@ -1,0 +1,44 @@
+/* Layout rules mirroring VS Code's markdown-language-features/media/markdown.css,
+   scoped to the editor's preview pane. Colour comes from the generated theme CSS. */
+.mpt-preview {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
+  font-size: 14px;
+  padding: 1em 26px 26px;
+  line-height: 22px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+.mpt-preview h1, .mpt-preview h2, .mpt-preview h3, .mpt-preview h4, .mpt-preview h5, .mpt-preview h6,
+.mpt-preview p, .mpt-preview ol, .mpt-preview ul, .mpt-preview pre { margin-top: 0; }
+.mpt-preview h1, .mpt-preview h2, .mpt-preview h3, .mpt-preview h4, .mpt-preview h5, .mpt-preview h6 {
+  font-weight: 600; margin-top: 24px; margin-bottom: 16px; line-height: 1.25;
+}
+.mpt-preview h1 { font-size: 2em; margin-top: 0; padding-bottom: 0.3em; border-bottom: 1px solid; }
+.mpt-preview h2 { font-size: 1.5em; padding-bottom: 0.3em; border-bottom: 1px solid; }
+.mpt-preview h3 { font-size: 1.25em; }
+.mpt-preview h4 { font-size: 1em; }
+.mpt-preview h5 { font-size: 0.875em; }
+.mpt-preview h6 { font-size: 0.85em; }
+.mpt-preview p { margin-bottom: 16px; }
+.mpt-preview li p { margin-bottom: 0.7em; }
+.mpt-preview ul, .mpt-preview ol { margin-bottom: 0.7em; }
+.mpt-preview a { text-decoration: none; }
+.mpt-preview a:hover { text-decoration: underline; }
+.mpt-preview hr { border: 0; height: 1px; border-bottom: 1px solid; }
+.mpt-preview table { border-collapse: collapse; margin-bottom: 0.7em; }
+.mpt-preview th { text-align: left; border-bottom: 1px solid; }
+.mpt-preview th, .mpt-preview td { padding: 5px 10px; }
+.mpt-preview table > tbody > tr + tr > td { border-top: 1px solid; }
+.mpt-preview blockquote { margin: 0 0 16px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; border-radius: 2px; }
+.mpt-preview code {
+  font-family: var(--vscode-editor-font-family, "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace);
+  font-size: 1em; line-height: 1.357em;
+}
+.mpt-preview pre:not(.hljs), .mpt-preview pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; }
+.mpt-preview pre code { display: inline-block; tab-size: 4; background: none; }
+.mpt-preview pre { position: relative; margin-bottom: 16px; border: 1px solid; }
+.mpt-preview img { max-width: 100%; }
+.mpt-preview table.frontmatter { margin-bottom: 16px; }
+.mpt-preview table.frontmatter th, .mpt-preview table.frontmatter td { padding: 6px 13px; border: 1px solid; text-align: left; vertical-align: top; }
+.mpt-preview input[type="checkbox"] { margin-right: 0.4em; }

@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      # vscode:prepublish runs `npm run build`, so this is the only build in the job.
+      - run: npx vsce package --no-dependencies
+      - name: Generated files are current
+        run: git diff --exit-code -- themes/themes.json package.json docs/site/index.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: '*.vsix'
