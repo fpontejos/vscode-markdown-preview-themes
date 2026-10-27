@@ -13,7 +13,8 @@ change takes effect on the next render; no reload is required.
 The extension is installed from a locally packaged `.vsix`.
 
 ```sh
-cd ~/WORK/TOOLS/vscode-markdown-preview-themes
+git clone https://github.com/fpontejos/vscode-markdown-preview-themes.git
+cd vscode-markdown-preview-themes
 npm install
 npm run package          # typecheck, lint, smoke test, then build dist/ and write markdown-preview-themes-<version>.vsix
 code --install-extension markdown-preview-themes-0.1.0.vsix --force
@@ -34,7 +35,7 @@ differences.
 
 ## Use
 
-1. Open a Markdown file and its preview (`Cmd+Shift+V` or `Cmd+K V`).
+1. Open a Markdown file and its preview (`Ctrl+Shift+V` or `Ctrl+K V`; `Cmd` on macOS).
 2. Run **Markdown Preview Themes: Open Theme Editor** from the command palette, or use the icon in
    the title bar of a Markdown editor. The editor opens beside the preview.
 3. Each control writes to user settings immediately. The preview and the editor's sample pane
@@ -66,9 +67,8 @@ Keybinding example (`keybindings.json`):
 - The **Browse all themes** link in the description of the `mode`, `theme`, `lightTheme` and
   `darkTheme` settings in the Settings UI.
 - The icon in the title bar of a Markdown editor.
-- The URI `vscode://fpontejos.markdown-preview-themes/browse` from outside VS Code
-  (`open "vscode://fpontejos.markdown-preview-themes/browse"` on macOS). `…/editor` opens the theme
-  editor. VS Code asks for confirmation the first time the extension handles a URI.
+- The URI `vscode://fpontejos.markdown-preview-themes/browse` from outside VS Code, opened with
+  `open` (macOS), `xdg-open` (Linux) or `start` (Windows). `…/editor` opens the theme editor. VS Code asks for confirmation the first time the extension handles a URI.
 
 The Extensions view renders this README with `http`, `https` and `mailto` links only. Links to local
 files, `vscode:` URIs and `command:` URIs are not clickable there.
@@ -205,7 +205,7 @@ npm test            # smoke test of the CSS generator across every theme
 npm run check       # typecheck + lint + test; CI runs this
 npm run watch       # rebuild on change; F5 in VS Code launches an Extension Development Host
 npm run package     # check, then vsce package (vscode:prepublish runs build)
-node scripts/harness.mjs /tmp/mpt-harness dracula   # static pages emulating the preview and the editor, for browser checks
+node scripts/harness.mjs <outDir> dracula   # static pages emulating the preview and the editor, for browser checks; see the script header
 ```
 
 Layout:

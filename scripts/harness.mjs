@@ -2,20 +2,35 @@
 // extension's injected <style>, and (b) the theme editor webview with a mocked
 // VS Code API. Used for visual verification with a headless browser.
 // Usage: node scripts/harness.mjs <outDir> [themeId ...]
-// Set VSCODE_MARKDOWN_CSS to the path of markdown.css from VS Code's markdown-language-features
-// extension when VS Code is not installed at the default macOS location.
+// The pages embed markdown.css from VS Code's built-in markdown-language-features extension.
+// The script looks in the default install locations for macOS, Linux and Windows; set
+// VSCODE_MARKDOWN_CSS to the file's path when VS Code is installed elsewhere.
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { root, loadThemeCss, readThemes, readSample, createMarkdown } from './lib.mjs';
 
-const outDir = path.resolve(process.argv[2] ?? '/tmp/mpt-harness');
+const outDir = path.resolve(process.argv[2] ?? path.join(os.tmpdir(), 'mpt-harness'));
 const ids = process.argv.slice(3);
 fs.mkdirSync(outDir, { recursive: true });
 
 const { buildCss, DEFAULT_SETTINGS, effectiveFor, COLOR_KEYS } = await loadThemeCss();
 const themes = readThemes();
 const html = createMarkdown().render(readSample().body);
-const vscodeCssPath = process.env.VSCODE_MARKDOWN_CSS ?? '/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/markdown-language-features/media/markdown.css';
+const MARKDOWN_CSS = path.join('extensions', 'markdown-language-features', 'media', 'markdown.css');
+const vscodeCssCandidates = [
+  process.env.VSCODE_MARKDOWN_CSS,
+  path.join('/Applications/Visual Studio Code.app/Contents/Resources/app', MARKDOWN_CSS),
+  path.join('/usr/share/code/resources/app', MARKDOWN_CSS),
+  path.join('/usr/lib/code/resources/app', MARKDOWN_CSS),
+  process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Programs', 'Microsoft VS Code', 'resources', 'app', MARKDOWN_CSS),
+  process.env.ProgramFiles && path.join(process.env.ProgramFiles, 'Microsoft VS Code', 'resources', 'app', MARKDOWN_CSS),
+].filter(Boolean);
+const vscodeCssPath = vscodeCssCandidates.find((p) => fs.existsSync(p));
+if (!vscodeCssPath) {
+  console.error('markdown.css from VS Code not found. Set VSCODE_MARKDOWN_CSS to its path. Looked in:\n  ' + vscodeCssCandidates.join('\n  '));
+  process.exit(1);
+}
 const vscodeCss = fs.readFileSync(vscodeCssPath, 'utf8');
 
 // (a) real-preview emulation, one page per theme

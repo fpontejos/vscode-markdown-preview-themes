@@ -4,6 +4,14 @@
   "description": "Pick a colour theme and fonts for VS Code's built-in Markdown preview. Ships the CodeMirror themes used by programmingfonts.org, plus a live theme editor and custom CSS.",
   "version": "0.1.0",
   "publisher": "fpontejos",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fpontejos/vscode-markdown-preview-themes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fpontejos/vscode-markdown-preview-themes/issues"
+  },
+  "homepage": "https://github.com/fpontejos/vscode-markdown-preview-themes#readme",
   "author": {
     "name": "Farina Pontejos"
   },
