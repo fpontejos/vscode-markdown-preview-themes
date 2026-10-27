@@ -17,7 +17,7 @@ git clone https://github.com/fpontejos/vscode-markdown-preview-themes.git
 cd vscode-markdown-preview-themes
 npm install
 npm run package          # typecheck, lint, smoke test, then build dist/ and write markdown-preview-themes-<version>.vsix
-code --install-extension markdown-preview-themes-0.1.0.vsix --force
+code --install-extension markdown-preview-themes-<version>.vsix --force
 ```
 
 `npm run install-local` runs the last two steps. A window reload is required after installation.

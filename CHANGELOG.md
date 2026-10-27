@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 (2026-10-27)
 
 - Packaging: the `.vsix` no longer includes the source map; the bundled theme browser page moves from `media/themes.html` to `dist/themes.html`.
 - Repository: build scripts move to `scripts/`, the smoke test to `test/`; vendored CodeMirror trimmed to the theme stylesheets; ESLint, EditorConfig and a GitHub Actions workflow added.
